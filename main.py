@@ -8,6 +8,7 @@ while running == 1:
     while mode == "New Order":
         print("Please order from the following: Cappuccino, Latte, Espresso, Iced Coffee")
         order1 = input("")
+        order = []
         if order1 == "Cappuccino":
             cap = cap + 1
             print("Item Added!")
