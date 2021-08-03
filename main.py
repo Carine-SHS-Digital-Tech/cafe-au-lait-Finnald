@@ -14,10 +14,6 @@ while True:
     mode = input("New Order/Daily Summary: ")
     if mode == "New Order":
         orderdict = {
-            "Cappuccino": 0,
-            "Espresso": 0,
-            "Latte": 0,
-            "Iced Coffee": 0
         }
         while mode == "New Order":
             items = 0
@@ -30,7 +26,8 @@ while True:
                 else:
                     print("Invalid Input")
 
-            print("Please order from the following: Cappuccino, Latte, Espresso, Iced Coffee: ")
+            print("Please order from the following; Cappuccino, Latte, Espresso, Iced Coffee: ")
+            print("or press enter to end the order. ")
             while items < 4:
                 order = input("")
                 if order == "Cappuccino":
@@ -53,11 +50,15 @@ while True:
                     iced += 1
                     orderdict["Iced Coffee"] = iced
                     print("Item Added!")
+                elif order == "":
+                    print("Order ended")
+                    break
                 else:
                     print("Invalid Input")
-            print("Order Complete")
-            mode = " "
-            print(orderdict)
+            print("Confirm the order:")
+            for key, value in orderdict.items():
+                print(f"{value} {key}")
+            confirm = input("Confirm? (Yes/No)")
     elif mode == "Daily Summary":
         print()
     else:
