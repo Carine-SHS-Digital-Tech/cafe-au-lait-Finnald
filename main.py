@@ -13,7 +13,7 @@ pricedict = {
 while True:
     mode = input("New Order/Daily Summary: ")
     if mode == "New Order":
-        order = {
+        orderdict = {
             "Cappuccino": 0,
             "Espresso": 0,
             "Latte": 0,
@@ -30,34 +30,34 @@ while True:
                 else:
                     print("Invalid Input")
 
+            print("Please order from the following: Cappuccino, Latte, Espresso, Iced Coffee: ")
             while items < 4:
-                print("Please order from the following: Cappuccino, Latte, Espresso, Iced Coffee")
                 order = input("")
                 if order == "Cappuccino":
                     items += 1
                     cap += 1
-                    order["Cappuccino"] = int(cap)
+                    orderdict["Cappuccino"] = cap
                     print("Item Added!")
                 elif order == "Latte":
                     items += 1
                     lat += 1
-                    order["Latte"] = int(lat)
+                    orderdict["Latte"] = lat
                     print("Item Added!")
                 elif order == "Espresso":
                     items += 1
                     esp += 1
-                    order["Espresso"] = int(esp)
+                    orderdict["Espresso"] = esp
                     print("Item Added!")
                 elif order == "Iced Coffee":
                     items += 1
                     iced += 1
-                    order["Iced Coffee"] = int(iced)
+                    orderdict["Iced Coffee"] = iced
                     print("Item Added!")
                 else:
                     print("Invalid Input")
             print("Order Complete")
             mode = " "
-            print(order)
+            print(orderdict)
     elif mode == "Daily Summary":
         print()
     else:
