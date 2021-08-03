@@ -36,23 +36,28 @@ while True:
                 if order == "Cappuccino":
                     items += 1
                     cap += 1
+                    order["Cappuccino"] = int(cap)
                     print("Item Added!")
                 elif order == "Latte":
                     items += 1
                     lat += 1
+                    order["Latte"] = int(lat)
                     print("Item Added!")
                 elif order == "Espresso":
                     items += 1
                     esp += 1
+                    order["Espresso"] = int(esp)
                     print("Item Added!")
                 elif order == "Iced Coffee":
                     items += 1
                     iced += 1
+                    order["Iced Coffee"] = int(iced)
                     print("Item Added!")
                 else:
                     print("Invalid Input")
             print("Order Complete")
-
+            mode = " "
+            print(order)
     elif mode == "Daily Summary":
         print()
     else:
