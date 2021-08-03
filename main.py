@@ -69,7 +69,14 @@ while True:
             print("Confirm the order:")
             for key, value in orderdict.items():
                 print(f"{value} {key}")
-            confirm = input("Confirm? (Yes/No)")
+            confirm = " "
+            while confirm = " ":
+                confirm = input("Confirm order? (Yes/No)")
+                if confirm == "Yes":
+                    for key in orderdict.items():
+                        print(f"")
+                else:
+                    print("Invalid Input")
             mode = " "
 
     elif mode == "Daily Summary":
