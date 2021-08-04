@@ -81,12 +81,29 @@ while True:
                     totalorders += 1
                     confirm = confirmchoice
                     gtotal = 0
+                    print("Sales receipt: ")
                     print("{:<15} {:<10} {:<20} {:<20} {:<10} {:<15} {:<10}".format("Item", "Quantity", "Single Item Price", "Price Excl. GST", "GST", "Extra Charges", "Total"))
                     for key, value in orderdict.items():
                         print("{:<15} {:<10} {:<20} {:<20} {:<10} {:<15} {:<10}".format(key, value, pricedict[key], value*pricedict[key], round(value*pricedict[key]*0.1, 2), round((value*0.1+value*pricedict[key])*charge,2), round((value*pricedict[key]+value*pricedict[key]*0.1+(value*0.1+value*pricedict[key])*charge), 2)))
                         gtotal += round(value*pricedict[key]+value*pricedict[key]*0.1+(value*0.1+value*pricedict[key])*charge, 2)
                         totalinc += gtotal
-                    print(f"Grand Total: {round(gtotal, 2)}")
+                    print(f"Grand Total: ${round(gtotal, 2)}")
+                    tender = ""
+                    while tender == "":
+                        while True:
+                            try:
+                                tendered = float(input("Amount tendered ($): "))
+                                break
+                            except:
+                                print("Invalid Input")
+                        if isinstance(tendered, float):
+                            if tendered >= gtotal:
+                                print(f"Change: ${round(tendered-gtotal, 2)}")
+                                tender = tendered
+                            elif tendered < gtotal:
+                                print("Insufficient funds")
+                        else:
+                            print("Invalid Input")
                     re = input("Print receipt? (Yes/No) ")
                     if re == "Yes":
                         print("Receipt printed")
