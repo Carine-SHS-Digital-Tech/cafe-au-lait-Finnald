@@ -1,9 +1,9 @@
 #initialises variables
 import csv
-capTotal = 0
-latTotal = 0
-espTotal = 0
-icedTotal = 0
+captotal = 0
+lattotal = 0
+esptotal = 0
+icedtotal = 0
 dine = 0
 take = 0
 totalinc = 0
@@ -46,24 +46,24 @@ while True:     #never turns off unless break
                 if order == "Cappuccino":       #adds the coffee type to an empty dictionary to make the sales receipt an appropriate size
                     items += 1
                     cap += 1
-                    capTotal += 1
+                    captotal += 1
                     orderdict["Cappuccino"] = cap
                     print("Item Added!")
                 elif order == "Latte":
                     items += 1
                     lat += 1
-                    latTotal += 1
+                    lattotal += 1
                     orderdict["Latte"] = lat
                     print("Item Added!")
                 elif order == "Espresso":
                     items += 1
-                    espTotal += 1
+                    esptotal += 1
                     esp += 1
                     orderdict["Espresso"] = esp
                     print("Item Added!")
                 elif order == "Iced Coffee":
                     items += 1
-                    icedTotal += 1
+                    icedtotal += 1
                     iced += 1
                     orderdict["Iced Coffee"] = iced
                     print("Item Added!")
@@ -86,8 +86,9 @@ while True:     #never turns off unless break
                     print("{:<15} {:<10} {:<20} {:<20} {:<10} {:<15} {:<10}".format("Item", "Quantity", "Single Item Price", "Price Excl. GST", "GST", "Extra Charges", "Total"))   #headers for sales receipt
                     for key, value in orderdict.items():        #prints the sales receipt in tabular format
                         print("{:<15} {:<10} {:<20} {:<20} {:<10} {:<15} {:<10}".format(key, value, pricedict[key], value*pricedict[key], round(value*pricedict[key]*0.1, 2), round((value*0.1+value*pricedict[key])*charge,2), round((value*pricedict[key]+value*pricedict[key]*0.1+(value*0.1+value*pricedict[key])*charge), 2)))
-                        gtotal += round(value*pricedict[key]+value*pricedict[key]*0.1+(value*0.1+value*pricedict[key])*charge, 2)
-                        totalinc += gtotal
+                        gtotal += round(value*pricedict[key]+value*pricedict[key]*0.1+(value*pricedict[key]+value*pricedict[key]*0.1)*charge, 2)
+                        #               |    og amount     |        gst              |                      extra charge                    |
+                    totalinc += gtotal
                     print(f"Grand Total: ${round(gtotal, 2)}")
                     tender = ""
                     while tender == "":     #asks for amount tendered to calculate change
@@ -116,25 +117,25 @@ while True:     #never turns off unless break
 
     elif mode == "Daily Summary":       #prints daily summary contents in a tabular format
         print("{:<15} {:<15}".format("Menu Item", "Frequency"))
-        print("{:<15} {:<15}".format("Cappuccino", capTotal))
-        print("{:<15} {:<15}".format("Espresso", espTotal))
-        print("{:<15} {:<15}".format("Latte", latTotal))
-        print("{:<15} {:<15}".format("Iced Coffee", icedTotal))
+        print("{:<15} {:<15}".format("Cappuccino", captotal))
+        print("{:<15} {:<15}".format("Espresso", esptotal))
+        print("{:<15} {:<15}".format("Latte", lattotal))
+        print("{:<15} {:<15}".format("Iced Coffee", icedtotal))
         print()
         print("{:<15} {:<15} {:<15} {:<15} {:<15} {:<15}".format("Dine in Freq.", "Take out Freq.", "Total Orders", "Total Cups", "Total Income", "Total GST"))
-        print("{:<15} {:<15} {:<15} {:<15} {:<15} {:<15}".format(dine, take, totalorders, capTotal+espTotal+latTotal+icedTotal, round(totalinc, 2), round(totalinc/1.1*0.1, 2)))
+        print("{:<15} {:<15} {:<15} {:<15} {:<15} {:<15}".format(dine, take, totalorders, captotal+esptotal+lattotal+icedtotal, round(totalinc, 2), round(totalinc/1.1*0.1, 2)))
 
         with open("daily_orders.csv", "w", encoding="UTF8", newline="") as f:   #writes the values to daily_orders.csv
             writer = csv.writer(f)
             data = [                        #is the values to be written to daily_orders.csv
                 ["Menu Item", "Frequency"],
-                ["Cappuccino", capTotal],
-                ["Espresso", espTotal],
-                ["Latte", latTotal],
-                ["Iced Coffee", icedTotal],
+                ["Cappuccino", captotal],
+                ["Espresso", esptotal],
+                ["Latte", lattotal],
+                ["Iced Coffee", icedtotal],
                 [""],
                 ["Dine in Freq.", "Take out Freq.", "Total Orders", "Total Cups", "Total Income", "Total GST"],
-                [dine, take, totalorders, capTotal+espTotal+latTotal+icedTotal, round(totalinc, 2), round(totalinc/1.1*0.1, 2)]
+                [dine, take, totalorders, captotal+esptotal+lattotal+icedtotal, round(totalinc, 2), round(totalinc/1.1*0.1, 2)]
             ]
             writer.writerows(data) #writes to csv
     else:
