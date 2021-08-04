@@ -1,3 +1,4 @@
+import csv
 capTotal = 0
 latTotal = 0
 espTotal = 0
@@ -104,5 +105,19 @@ while True:
         print()
         print("{:<15} {:<15} {:<15} {:<15} {:<15} {:<15}".format("Dine in Freq.", "Take out Freq.", "Total Orders", "Total Cups", "Total Income", "Total GST"))
         print("{:<15} {:<15} {:<15} {:<15} {:<15} {:<15}".format(dine, take, totalorders, capTotal+espTotal+latTotal+icedTotal, round(totalinc, 2), round(totalinc/1.1*0.1, 2)))
+
+        with open("daily_orders.csv", "w", encoding="UTF8", newline="") as f:
+            writer = csv.writer(f)
+            data = [
+                ["Menu Item", "Frequency"],
+                ["Cappuccino", capTotal],
+                ["Espresso", espTotal],
+                ["Latte", latTotal],
+                ["Iced Coffee", icedTotal],
+                [""],
+                ["Dine in Freq.", "Take out Freq.", "Total Orders", "Total Cups", "Total Income", "Total GST"],
+                [dine, take, totalorders, capTotal+espTotal+latTotal+icedTotal, round(totalinc, 2), round(totalinc/1.1*0.1, 2)]
+            ]
+            writer.writerows(data)
     else:
         print("Invalid Input")
