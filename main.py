@@ -27,9 +27,11 @@ while True:
                 if ordertypechoice == "Dine in":
                     ordertype = ordertypechoice
                     dine += 1
+                    charge = 0
                 elif ordertypechoice == "Take out":
                     ordertype = ordertypechoice
                     take += 1
+                    charge = 0.05
                 else:
                     print("Invalid Input")
 
@@ -70,11 +72,13 @@ while True:
             for key, value in orderdict.items():
                 print(f"{value} {key}")
             confirm = " "
-            while confirm = " ":
-                confirm = input("Confirm order? (Yes/No)")
-                if confirm == "Yes":
-                    for key in orderdict.items():
-                        print(f"")
+            while confirm == " ":
+                confirmchoice = input("Confirm order? (Yes/No)")
+                if confirmchoice == "Yes":
+                    confirm = confirmchoice
+                    print("{:<15} {:<10} {:<25} {:<10} {:<15} {:<10}".format("Item", "Quantity", "Price Excl. GST", "GST", "Extra Charges", "Total"))
+                    for key, value in orderdict.items():
+                        print("{:<15} {:<10} {:<25} {:<10} {:<15} {:<10}".format(key, value, value*pricedict[key], (value*pricedict[key]*0.1, (value*0.1+value*pricedict[key])*charge), round(int(value*pricedict[key]+value*pricedict[key]*0.1+(value*0.1+value*pricedict[key])*charge))))
                 else:
                     print("Invalid Input")
             mode = " "
