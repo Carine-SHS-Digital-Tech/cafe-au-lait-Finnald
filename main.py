@@ -76,9 +76,12 @@ while True:
                 confirmchoice = input("Confirm order? (Yes/No)")
                 if confirmchoice == "Yes":
                     confirm = confirmchoice
-                    print("{:<15} {:<10} {:<25} {:<10} {:<15} {:<10}".format("Item", "Quantity", "Price Excl. GST", "GST", "Extra Charges", "Total"))
+                    gtotal = 0
+                    print("{:<15} {:<10} {:<20} {:<20} {:<10} {:<15} {:<10}".format("Item", "Quantity", "Single Item Price", "Price Excl. GST", "GST", "Extra Charges", "Total"))
                     for key, value in orderdict.items():
-                        print("{:<15} {:<10} {:<25} {:<10} {:<15} {:<10}".format(key, value, value*pricedict[key], (value*pricedict[key]*0.1, (value*0.1+value*pricedict[key])*charge), round(int(value*pricedict[key]+value*pricedict[key]*0.1+(value*0.1+value*pricedict[key])*charge))))
+                        print("{:<15} {:<10} {:<20} {:<20} {:<10} {:<15} {:<10}".format(key, value, pricedict[key], value*pricedict[key], round(value*pricedict[key]*0.1, 2), round((value*0.1+value*pricedict[key])*charge,2), round((value*pricedict[key]+value*pricedict[key]*0.1+(value*0.1+value*pricedict[key])*charge), 2)))
+                        gtotal += round(value*pricedict[key]+value*pricedict[key]*0.1+(value*0.1+value*pricedict[key])*charge, 2)
+                    print(f"Grand Total: {gtotal}")
                 else:
                     print("Invalid Input")
             mode = " "
