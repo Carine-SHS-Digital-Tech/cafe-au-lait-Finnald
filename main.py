@@ -27,12 +27,12 @@ while True:     #never turns off unless break
         iced = 0
         while mode == "New Order":          #asks for the order type
             while ordertype == " ":
-                ordertypechoice = input("Dine in or Take out? ")
-                if ordertypechoice == "Dine in":
+                ordertypechoice = input("Dine In or Take Out? ")
+                if ordertypechoice == "Dine In":
                     ordertype = ordertypechoice
                     dine += 1
                     charge = 0
-                elif ordertypechoice == "Take out":
+                elif ordertypechoice == "Take Out":
                     ordertype = ordertypechoice
                     take += 1
                     charge = 0.05
