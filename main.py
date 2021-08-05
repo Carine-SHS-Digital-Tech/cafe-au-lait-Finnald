@@ -111,6 +111,8 @@ while True:     #never turns off unless break
                         print("Receipt printed")
                     else:
                         print()
+                elif confirmchoice == "No":
+                    break
                 else:
                     print("Invalid Input")
             mode = " "      #resets the mode for selection
