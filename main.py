@@ -16,7 +16,7 @@ pricedict = {
 }
 
 while True:     #never turns off unless break
-    mode = input("New Order/Daily Summary: ")
+    mode = input("New Order/Daily Summary: ").lower()
     if mode.lower() == "new order":
         orderdict = {}      #empty dictionary for later
         ordertype = " "
@@ -41,30 +41,30 @@ while True:     #never turns off unless break
 
             print("Please order from the following; Cappuccino, Latte, Espresso, Iced Coffee: ")        #building the customer's order
             print("or press enter to end the order. ")
-            while items < 4:            #max item count of 4
+            while True:            #order loop
                 order = input("")
                 if order.lower() == "cappuccino":       #adds the coffee type to an empty dictionary to make the sales receipt an appropriate size
-                    items += 1
-                    cap += 1
-                    captotal += 1
+                    quant = int(input("How many? "))
+                    cap += quant
+                    captotal += quant
                     orderdict["Cappuccino"] = cap
                     print("Item Added!")
                 elif order.lower() == "latte":
-                    items += 1
-                    lat += 1
-                    lattotal += 1
+                    quant = int(input("How many? "))
+                    lat += quant
+                    lattotal += quant
                     orderdict["Latte"] = lat
                     print("Item Added!")
                 elif order.lower() == "espresso":
-                    items += 1
-                    esptotal += 1
-                    esp += 1
+                    quant = int(input("How many? "))
+                    esptotal += quant
+                    esp += quant
                     orderdict["Espresso"] = esp
                     print("Item Added!")
                 elif order.lower() == "iced coffee":
-                    items += 1
-                    icedtotal += 1
-                    iced += 1
+                    quant = int(input("How many? "))
+                    icedtotal += quant
+                    iced += quant
                     orderdict["Iced Coffee"] = iced
                     print("Item Added!")
                 elif order == "":
