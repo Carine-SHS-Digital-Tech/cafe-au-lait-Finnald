@@ -1,8 +1,8 @@
 Menu Item,Frequency
 Cappuccino,0
-Espresso,0
-Latte,0
-Iced Coffee,0
+Espresso,2
+Latte,1
+Iced Coffee,2
 ""
 Dine in Freq.,Take out Freq.,Total Orders,Total Cups,Total Income,Total GST
-0,0,0,0,0,0.0
+2,0,1,5,2.75,0.25

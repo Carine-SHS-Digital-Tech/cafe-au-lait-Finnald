@@ -17,7 +17,7 @@ pricedict = {
 
 while True:     #never turns off unless break
     mode = input("New Order/Daily Summary: ")
-    if mode == "New Order":
+    if mode.lower() == "new order":
         orderdict = {}      #empty dictionary for later
         ordertype = " "
         items = 0
@@ -25,14 +25,14 @@ while True:     #never turns off unless break
         lat = 0
         esp = 0
         iced = 0
-        while mode == "New Order":          #asks for the order type
+        while mode == "new order":          #asks for the order type
             while ordertype == " ":
                 ordertypechoice = input("Dine In or Take Out? ")
-                if ordertypechoice == "Dine In":
+                if ordertypechoice.lower() == "dine in":
                     ordertype = ordertypechoice
                     dine += 1
                     charge = 0
-                elif ordertypechoice == "Take Out":
+                elif ordertypechoice.lower() == "take out":
                     ordertype = ordertypechoice
                     take += 1
                     charge = 0.05
@@ -43,25 +43,25 @@ while True:     #never turns off unless break
             print("or press enter to end the order. ")
             while items < 4:            #max item count of 4
                 order = input("")
-                if order == "Cappuccino":       #adds the coffee type to an empty dictionary to make the sales receipt an appropriate size
+                if order.lower() == "cappuccino":       #adds the coffee type to an empty dictionary to make the sales receipt an appropriate size
                     items += 1
                     cap += 1
                     captotal += 1
                     orderdict["Cappuccino"] = cap
                     print("Item Added!")
-                elif order == "Latte":
+                elif order.lower() == "latte":
                     items += 1
                     lat += 1
                     lattotal += 1
                     orderdict["Latte"] = lat
                     print("Item Added!")
-                elif order == "Espresso":
+                elif order.lower() == "espresso":
                     items += 1
                     esptotal += 1
                     esp += 1
                     orderdict["Espresso"] = esp
                     print("Item Added!")
-                elif order == "Iced Coffee":
+                elif order.lower() == "iced coffee":
                     items += 1
                     icedtotal += 1
                     iced += 1
@@ -78,7 +78,7 @@ while True:     #never turns off unless break
             confirm = " "
             while confirm == " ":
                 confirmchoice = input("Confirm order? (Yes/No) ")   #confirms the order
-                if confirmchoice == "Yes":
+                if confirmchoice.lower() == "yes":
                     totalorders += 1
                     confirm = confirmchoice
                     gtotal = 0
@@ -107,17 +107,17 @@ while True:     #never turns off unless break
                         else:
                             print("Invalid Input")
                     re = input("Print receipt? (Yes/No) ")  #this is the part where the employee asks the customer if they want a receipt
-                    if re == "Yes":
+                    if re.lower() == "yes":
                         print("Receipt printed")
                     else:
                         print()
-                elif confirmchoice == "No":
+                elif confirmchoice.lower() == "no":
                     break
                 else:
                     print("Invalid Input")
             mode = " "      #resets the mode for selection
 
-    elif mode == "Daily Summary":       #prints daily summary contents in a tabular format
+    elif mode.lower() == "daily summary":       #prints daily summary contents in a tabular format
         print("{:<15} {:<15}".format("Menu Item", "Frequency"))
         print("{:<15} {:<15}".format("Cappuccino", captotal))
         print("{:<15} {:<15}".format("Espresso", esptotal))
