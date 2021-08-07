@@ -69,7 +69,7 @@ while True:     #never turns off unless break
                     print("Item Added!")
                 elif order == "":
                     print("Order ended")
-                    break                       #if the customer decides they want less than 4 items, leaves the order loop
+                    break                       #if the customer decides they want to end their order, leaves the order loop
                 else:
                     print("Invalid Input")      #if an irrelevant value is entered, lets the user try again
             print("Confirm the order:")
